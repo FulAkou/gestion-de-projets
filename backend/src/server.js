@@ -17,7 +17,7 @@ const startServer = async () => {
         `🌐 API URL: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}`,
       );
       console.log(
-        `💚 Health check: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}/api/health`,
+        `💚 Health check: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}api/health`,
       );
     });
 
