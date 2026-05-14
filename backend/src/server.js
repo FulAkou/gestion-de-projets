@@ -2,8 +2,6 @@ import "dotenv/config";
 import app from "./app.js";
 import { connectDB } from "./config/database.js";
 
-const PORT = process.env.PORT || 5000;
-
 /**
  * Start the server
  */
@@ -13,14 +11,13 @@ const startServer = async () => {
     await connectDB();
 
     // Start Express server
-    const server = app.listen(PORT, () => {
-      console.log(`🚀 Server is running on port ${PORT}`);
+    const server = app.listen(() => {
       console.log(`📍 Environment: ${process.env.NODE_ENV || "development"}`);
       console.log(
-        `🌐 API URL: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}:${PORT}`,
+        `🌐 API URL: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}`,
       );
       console.log(
-        `💚 Health check: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}:${PORT}/api/health`,
+        `💚 Health check: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}/api/health`,
       );
     });
 
