@@ -1,6 +1,6 @@
-import 'dotenv/config';
-import app from './app.js';
-import { connectDB } from './config/database.js';
+import "dotenv/config";
+import app from "./app.js";
+import { connectDB } from "./config/database.js";
 
 const PORT = process.env.PORT || 5000;
 
@@ -15,21 +15,24 @@ const startServer = async () => {
     // Start Express server
     const server = app.listen(PORT, () => {
       console.log(`🚀 Server is running on port ${PORT}`);
-      console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`🌐 API URL: http://localhost:${PORT}`);
-      console.log(`💚 Health check: http://localhost:${PORT}/api/health`);
+      console.log(`📍 Environment: ${process.env.NODE_ENV || "development"}`);
+      console.log(
+        `🌐 API URL: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}:${PORT}`,
+      );
+      console.log(
+        `💚 Health check: ${process.env.CORS_ORIGIN || "https://gestion-de-projets-seven.vercel.app/"}:${PORT}/api/health`,
+      );
     });
 
     // Graceful shutdown
-    process.on('SIGTERM', () => {
-      console.log('👋 SIGTERM signal received: closing HTTP server');
+    process.on("SIGTERM", () => {
+      console.log("👋 SIGTERM signal received: closing HTTP server");
       server.close(() => {
-        console.log('🛑 HTTP server closed');
+        console.log("🛑 HTTP server closed");
       });
     });
-
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error("❌ Failed to start server:", error);
     process.exit(1);
   }
 };
